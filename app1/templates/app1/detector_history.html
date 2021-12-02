@@ -1,0 +1,32 @@
+{% extends 'app1/detectorHome.html' %}
+
+{% comment %} Extraction function {% endcomment %}
+{% block content %}
+    <div class="row">
+        <div class="container" style="height:40vh;overflow:auto;">
+            <table class="table table-striped">
+                <thead style="background-color: gainsboro; color: black;">
+                <tr>
+                    <th class="text-center">FileName</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">ClientID</th>
+                    <th class="text-center">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for file in data %}
+                        {% csrf_token %}
+                        <tr><td>{{ file.document }}</td>
+                            <td>{{ file.status }}</td>
+                        <td>{{ file.username }}</td>
+                        <td>{{ file.clientid }}</td>
+                        <td>{{ file.uploaded_at }}</td>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock content %}

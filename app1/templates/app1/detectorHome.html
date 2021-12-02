@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Leakage Detection</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+  <style>
+    *{
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">      
+      <a class="navbar-brand navbar-colored" href="#">CSE3501</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">    
+      <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Sign Out </a></li>
+    </ul>
+	
+  </div>
+</nav>
+
+<div class="row color2">
+  <div class="col-6 text-center">
+    <h2><p class="color1">Leakage detection</p></h4>
+  </div>  
+</div>
+
+<div class="row">
+  <div class="row container" style="margin-left: 0.1rem">
+    <ul class="nav nav-tabs">
+      <li class="{% if nbar == 'home' %}active{% endif %}"><a href="/user/detectorhome/">Home</a></li>
+      <li class="{% if nbar == 'changepass' %}active{% endif %}"><a href="/user/changepassword/">Change Password</a></li>
+      <li class="{% if nbar == 'checkdoc' %}active{% endif %}"><a href="/user/checkdocument">Check Document</a></li>
+      <li class="{% if nbar == 'history' %}active{% endif %}"><a href="/user/history">History</a></li>
+    </ul>
+  </div>
+
+  <div class="row text-center">
+  {% block content %}
+  {% endblock %}
+
+  </div>
+</div>
+
+  <div class="row text-right" style = " background-color: #f1fff1; positon:sticky ; bottom: 0; padding: 0">
+      <p style="padding: 0; margin-right: 50px; margin-bottom:0;"><em>Username: </em><b class="color2" style="color: #1111ff;"> {{ username }}</b></p>
+  </div>
+</body>
+</html>
